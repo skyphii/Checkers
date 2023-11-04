@@ -1,12 +1,16 @@
 import pygame
+from utils import Utils
+from board import Board
 
 pygame.init()
 
-WIDTH = 1200
-HEIGHT = 1000
-
-screen = pygame.display.set_mode([WIDTH, HEIGHT])
+screen = pygame.display.set_mode([Utils.WIDTH, Utils.HEIGHT])
 pygame.display.set_caption("Checkers (in-dev)")
+
+gameObjects = []
+board = Board()
+gameObjects.append(board)
+board.setup()
 
 running = True
 while running:
@@ -14,10 +18,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill((10, 10, 10))
+    screen.fill((40, 10, 40))
 
-    # for obj in gameObjects:
-    #     obj.update(screen)
+    for obj in gameObjects:
+        obj.draw(screen)
 
     pygame.display.flip()
 
